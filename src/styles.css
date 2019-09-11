@@ -1,1 +1,249 @@
 /* You can add global styles to this file, and also import other style files */
+/* .container {
+  margin-top: 80px;
+} */
+/* body {
+  font-family: Segoe UI, Arial, Helvetica, Lucida Grande, sans-serif;
+  font-size: 13px;
+  color: #000;
+  background: #f5fcf6;
+} */
+a {
+  cursor: pointer;
+}
+.compare-table th {
+  background: #deedfd;
+  padding: 0 0 8px;
+}
+.compare-table th div {
+  position: relative;
+  width: 0;
+  height: 0;
+  font-size: 0;
+}
+.compare-table th.th-even {
+  background: #cae2fc;
+}
+.compare-table th.side-td {
+  background: #e2f5cc !important;
+}
+.compare-table th h2 {
+  background: #18bc9c;
+  line-height: 37px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #f5fcf6;
+  letter-spacing: -1px;
+  padding-left: 10px;
+  height: 37px;
+  overflow: hidden;
+}
+.compare-table th h2 a {
+  color: #f5fcf6;
+}
+.compare-table th h2 a:hover {
+  text-decoration: underline;
+  color: #f5fcf6 !important;
+}
+.compare-table th.suggest h2 a {
+  color: #9dc7f3;
+}
+.compare-table th.side-td h2 {
+  background: #18bc9c;
+}
+.compare-table td.side-td,
+.compare-table th.side-td {
+  border-right: 3px solid #f5fcf6;
+}
+.compare-table td {
+  background: #deedfd;
+  vertical-align: middle;
+  padding: 6px 10px 6px 16px;
+  border-bottom: 1px solid #f5fcf6;
+  line-height: 18px;
+}
+.compare-table td.side-td {
+  position: relative;
+  text-align: right;
+  font-weight: 700;
+  color: #303030;
+  padding: 6px 8px 6px 10px !important;
+}
+.compare-table td.side-td .i-report {
+  left: 6px;
+  top: 6px;
+}
+.compare-table td.td-even {
+  background: #cae2fc;
+}
+.compare-table .img-tr {
+  height: 160px;
+}
+.compare-table .img-tr td {
+  padding: 0;
+  vertical-align: top;
+}
+.compare-table .img-tr td.none {
+  vertical-align: middle;
+}
+.compare-table .img-tr td.side-td {
+  padding: 0 !important;
+  text-align: left;
+  font-weight: 400;
+}
+.img-tr td.side-td a {
+  display: block;
+  position: relative;
+  background: #6bba70;
+  padding: 7px 10px 7px 32px;
+  margin: 0 12px 5px;
+  font-size: 14px;
+  color: #fff;
+}
+.img-tr td.side-td a.current {
+  background: #008c00;
+}
+.img-tr td.side-td a:hover {
+  background-color: #129d12;
+}
+.i-chk-box {
+  background-position: 0 -1882px;
+  height: 16px;
+  width: 16px;
+  top: 9px;
+  left: 9px;
+}
+.current .i-chk-box {
+  background-position: 0 -108px;
+}
+.img-tr td.side-td h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #04005b;
+  letter-spacing: -1px;
+  padding: 6px 0 10px 8px;
+}
+.img-tr .simg {
+  float: left;
+  margin: 14px 20px 0;
+}
+.img-tr .simg img {
+  display: block;
+  max-height: 125px;
+  max-width: 104px;
+  margin: auto;
+}
+.img-tr .info {
+  margin: 48px 0 0 144px;
+  width: 105px;
+  text-align: center;
+  position: relative;
+}
+.compare-table .price {
+  display: block;
+  color: #aa0a00;
+  font-size: 20px;
+  letter-spacing: -1px;
+  margin: 0 auto 12px;
+}
+.img-tr .suggest div.first {
+  position: relative;
+  height: 159px;
+}
+.img-tr .suggest .simg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.img-tr .suggest .simg img {
+  zoom: 1;
+  filter: alpha(opacity=20);
+  opacity: 0.2;
+}
+.img-tr .suggest .info {
+  margin-top: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.compare-table .suggest .price {
+  color: #cfa9b1;
+}
+.compare-table .suggest .read-more {
+  margin: 0 auto 8px;
+  background: #a7d4bc;
+}
+.compare-table .suggest .rating {
+  zoom: 1;
+  filter: alpha(opacity=30);
+  opacity: 0.3;
+}
+.compare-table .rating {
+  display: block;
+  margin: 0 auto 13px;
+}
+.compare-table .store-img {
+  border: 2px dotted #bbb;
+}
+.compare-table .store-img:hover {
+  border: 2px dotted #18bc9c;
+}
+.compare-table .store-img-td {
+  text-align: center;
+  line-height: 0;
+}
+.img-tr .button {
+  display: table;
+  margin: 0 auto;
+}
+.img-tr .compq-btn-container {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  background: #deedfd;
+  box-shadow: 0 -2px 2px -1px #aaa;
+}
+.img-tr .td-even .compq-btn-container {
+  background: #cae2fc;
+}
+.img-tr .compq-add-button {
+  margin: 13px auto;
+}
+.compare-table .tr-heading td {
+  background: #18bc9c;
+  border-top: 2px solid #f5fcf6;
+  border-bottom: none;
+  font-size: 15px;
+  color: #f5fcf6;
+  font-weight: 700;
+}
+.compare-table .tr-heading td .button {
+  float: right;
+  line-height: 22px;
+  padding: 0 6px;
+  margin: -3px 0;
+  font-size: 12px;
+  font-weight: 400;
+  background: #e0ffff;
+  color: #765f17;
+}
+.compare-table .tr-heading td .button:hover {
+  background: #ffcd3b !important;
+  box-shadow: none;
+}
+.compare-table .tr-heading td.side-td {
+  background: #18bc9c !important;
+  padding-left: 10px;
+  text-align: left;
+}
+.compare-table ul.cons,
+.compare-table ul.pros {
+  width: 100%;
+  margin: 0;
+}
+.compare-table ul.cons li,
+.compare-table ul.pros li {
+  padding-left: 26px;
+  padding-right: 10px;
+}

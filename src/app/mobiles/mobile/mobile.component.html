@@ -1,0 +1,27 @@
+<div class="card ">
+  <img class="card-img-top" src="http://placehold.it/500x325" alt="" />
+  <div class="card-body">
+    <h5>
+      <a
+        [routerLink]="[mobile.id]"
+        [title]="mobile.mobilename"
+        class="card-link"
+        >{{ mobile.mobilename | shortName }}</a
+      >
+    </h5>
+    <a
+      *ngIf="isInCompareList(mobile.id) == -1"
+      (click)="addToCompare(mobile.id)"
+      class="btn btn-primary"
+      href="javascript:;"
+      ><span>+ &nbsp;</span>Add To Compare</a
+    >
+    <a
+      *ngIf="isInCompareList(mobile.id) != -1"
+      (click)="removeFromCompare(mobile.id)"
+      class="btn btn-primary"
+      href="javascript:;"
+      ><span>× &nbsp;</span>Remove From Compare</a
+    >
+  </div>
+</div>

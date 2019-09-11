@@ -1,0 +1,91 @@
+<table
+  class="table table-stripped compare-table"
+  id="compare-table-main"
+  cellspacing="0"
+>
+  <thead>
+    <tr>
+      <th style="width:13.3%;" class="side-td th-even">
+        <div><i class="i-con-sec"></i></div>
+        <h2>Features</h2>
+      </th>
+      <th
+        style="width:21.675%"
+        [class.selected]="!!cMobile"
+        *ngFor="let cMobile of compare_list"
+      >
+        <div><i class="i-con-sec"></i></div>
+        <h2>
+          <a
+            *ngIf="cMobile"
+            [routerLink]="['../', cMobile.id]"
+            title="{{ cMobile.mobilename }}"
+            >{{ cMobile.mobilename }}</a
+          >
+        </h2>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="img-tr">
+      <td class="side-td td-even"></td>
+      <td
+        [ngClass]="{ selected: !!cMobile, 'td-even': index % 2 == 1 }"
+        *ngFor="let cMobile of compare_list; let i = index"
+      >
+        <div class="simg" *ngIf="cMobile">
+          <a
+            [routerLink]="['../', 'mobiles', cMobile.id]"
+            [title]="cMobile.mobilename"
+            ><img
+              src="http://placehold.it/59x125"
+              [alt]="cMobile.mobilename"
+              class="img"
+          /></a>
+        </div>
+        <button
+          *ngIf="cMobile"
+          (click)="removeFromCompare(cMobile.id)"
+          type="button"
+          class="close"
+          aria-label="Remove"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="info" *ngIf="cMobile">
+          <span class="price">₹13,749</span
+          ><span
+            title="User ratings: 4.25/5"
+            class="rating r14"
+            data-value="4.25"
+            ><i style="width: 85%"></i
+          ></span>
+        </div>
+      </td>
+    </tr>
+    <tr
+      class="tr-fullspecs"
+      [ngClass]="{ 'tr-heading': !mf.key }"
+      *ngFor="let mf of mobile_features"
+    >
+      <td class="side-td">
+        {{ mf.name }}
+      </td>
+      <td colspan="4" *ngIf="!mf.key; else elseBlock"></td>
+      <ng-template #elseBlock
+        ><td
+          [ngClass]="{ 'td-even': i % 2 == 1 }"
+          *ngFor="let cMobile of compare_list; let i = index"
+        >
+          {{
+            cMobile
+              ? mf.key == "brand"
+                ? (cMobile[mf.key] | getBrand)
+                : cMobile[mf.key]
+              : ""
+          }}
+        </td></ng-template
+      >
+    </tr>
+  </tbody>
+</table>

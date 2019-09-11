@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseAPIKey: "AIzaSyAI_HnqwrZmA_weLzfDlgWuCPFkuPDn5OI",
+  firebaseConfig: {
+    apiKey: "AIzaSyAI_HnqwrZmA_weLzfDlgWuCPFkuPDn5OI",
+    authDomain: "ng-compare-mobiles.firebaseapp.com",
+    databaseURL: "https://ng-compare-mobiles.firebaseio.com",
+    projectId: "ng-compare-mobiles",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID"
+  }
 };
 
 /*
