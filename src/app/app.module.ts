@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
@@ -61,6 +61,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
     },
     AngularFirestore
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [HeaderComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
