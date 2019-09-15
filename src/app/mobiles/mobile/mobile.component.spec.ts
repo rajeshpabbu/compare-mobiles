@@ -5,6 +5,7 @@ import { ShortNamePipe } from "src/app/brands.pipe";
 import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { MobileService } from "../mobile.service";
 
 describe("Component: Mobile", () => {
   const AngularFirestoreStub = {
@@ -21,9 +22,32 @@ describe("Component: Mobile", () => {
     });
   });
 
+  function setup() {
+    const fixture = TestBed.createComponent(MobileComponent);
+    const component = fixture.componentInstance;
+    const mobileService = fixture.debugElement.injector.get(MobileService);
+
+    return { fixture, component, mobileService };
+  }
+
   it("should create the app", () => {
-    let fixture = TestBed.createComponent(MobileComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const { component } = setup();
+    expect(component).toBeTruthy();
+  });
+  it("should add to compare stack successfully", () => {
+    const { component, mobileService } = setup();
+    mobileService.compareStack = [];
+    component.addToCompare(1);
+    expect(mobileService.compareStack).toEqual([1]);
+    component.addToCompare(2);
+    expect(mobileService.compareStack.length).toBe(2);
+  });
+  it("should remove from compare stack successfully", () => {
+    const { component, mobileService } = setup();
+    mobileService.compareStack = [1, 2];
+    component.removeFromCompare("1");
+    expect(mobileService.compareStack).toEqual([2]);
+    component.removeFromCompare("2");
+    expect(mobileService.compareStack.length).toBe(0);
   });
 });

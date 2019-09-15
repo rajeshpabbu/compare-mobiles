@@ -24,11 +24,21 @@ describe("AppComponent", () => {
       declarations: [AppComponent, HeaderComponent]
     }).compileComponents();
   }));
+  function setup() {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.componentInstance;
+
+    return { fixture, component };
+  }
 
   it("should create the app", () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const { component } = setup();
+    expect(component).toBeTruthy();
+  });
+
+  it("should call ngOnInit", () => {
+    const { component } = setup();
+    component.ngOnInit();
   });
 
   it(`should have as title 'compare-mobiles'`, () => {

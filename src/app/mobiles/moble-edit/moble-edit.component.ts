@@ -38,6 +38,8 @@ export class MobleEditComponent implements OnInit, OnDestroy {
     });
 
     this.brandSub = this.ms.brandsUpdated.subscribe(data => {
+      console.log("111111111111111111111");
+      console.log(data);
       this.brands = data;
     });
   }

@@ -6,6 +6,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MobileService } from "../mobile.service";
 
 describe("Component: Mobile Edit", () => {
   const AngularFirestoreStub = {
@@ -26,9 +27,30 @@ describe("Component: Mobile Edit", () => {
     });
   });
 
+  function setup() {
+    const fixture = TestBed.createComponent(MobleEditComponent);
+    const component = fixture.componentInstance;
+    const mobileService = fixture.debugElement.injector.get(MobileService);
+
+    return { fixture, component, mobileService };
+  }
+
   it("should create the app", () => {
-    let fixture = TestBed.createComponent(MobleEditComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const { component } = setup();
+    expect(component).toBeTruthy();
+  });
+  it("should call ngOnInit", () => {
+    const { component } = setup();
+    component.ngOnInit();
+  });
+  it("should load brands data on ngOnInit", () => {
+    const { fixture, component, mobileService } = setup();
+
+    component.ngOnInit();
+    fixture.detectChanges();
+    mobileService.addtoCompareStack(3);
+    mobileService.addtoCompareStack(2);
+
+    // expect(component.compareStack.length).toBe(2);
   });
 });

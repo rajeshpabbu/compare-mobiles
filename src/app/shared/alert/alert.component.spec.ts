@@ -8,9 +8,23 @@ describe("Component: Alert", () => {
     });
   });
 
+  function setup() {
+    const fixture = TestBed.createComponent(AlertComponent);
+    const component = fixture.componentInstance;
+
+    return { fixture, component };
+  }
+
   it("should create the app", () => {
-    let fixture = TestBed.createComponent(AlertComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const { component } = setup();
+    expect(component).toBeTruthy();
+  });
+  it("should call ngOnInit", () => {
+    const { component } = setup();
+    component.ngOnInit();
+  });
+  it("should call close emit", () => {
+    const { component } = setup();
+    component.onClose();
   });
 });

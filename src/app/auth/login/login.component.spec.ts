@@ -6,6 +6,7 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { FormsModule } from "@angular/forms";
+import { LoginService } from "./login.service";
 
 describe("Component: Login", () => {
   const AngularFirestoreStub = {
@@ -22,9 +23,33 @@ describe("Component: Login", () => {
     });
   });
 
+  function setup() {
+    const fixture = TestBed.createComponent(LoginComponent);
+    const component = fixture.componentInstance;
+    const loginService = fixture.debugElement.injector.get(LoginService);
+
+    return { fixture, component, loginService };
+  }
+
   it("should create the app", () => {
-    let fixture = TestBed.createComponent(LoginComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    const { component } = setup();
+    expect(component).toBeTruthy();
+  });
+
+  it("should have isLoginMode as true", () => {
+    const { component } = setup();
+    expect(component.isLoginMode).toBeTruthy();
+  });
+
+  it("should have isLoginMode as false after switching form to Register", () => {
+    const { component } = setup();
+    //component.onSubmit();
+    //expect(component.isLoginMode).toBeFalsy();
+  });
+
+  it("should set isLoading to true on form submit", () => {
+    const { component } = setup();
+    component.switchForm();
+    expect(component.isLoginMode).toBeFalsy();
   });
 });

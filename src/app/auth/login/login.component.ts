@@ -1,4 +1,4 @@
-import { Component, OnInit, ComponentFactoryResolver } from "@angular/core";
+import { Component, ComponentFactoryResolver } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
@@ -11,7 +11,7 @@ import { AlertComponent } from "src/app/shared/alert/alert.component";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
     private cfr: ComponentFactoryResolver
   ) {}
 
-  ngOnInit() {}
   switchForm() {
     this.isLoginMode = !this.isLoginMode;
   }

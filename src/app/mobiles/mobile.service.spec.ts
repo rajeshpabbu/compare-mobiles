@@ -30,20 +30,4 @@
 //     expect(service).toBeTruthy();
 //   }));
 
-//   it('expects service to fetch data with proper sorting',
-//   inject([HttpClientTestingModule, MobileService],
-//     (httpMock: HttpClientTestingModule, service: MobileService) => {
-//       // We call the service
-//       service.getAllMobiles().subscribe(data => {
-//         expect(data.pageInfo.totalRecordCount).toBe(21);
-//         expect(data.pageInfo.pageNumber).toBe(0);
-//         expect(data.data.length).toBe(7);
-//       });
-//       // We set the expectations for the HttpClient mock
-//       const req = httpMock.expectOne(fireBaseUrl + "mobiles.json");
-//       expect(req.request.method).toEqual('GET');
-//       // Then we set the fake data to be returned by the mock
-//       req.flush({data: ...});
-//     })
-// );
 // });

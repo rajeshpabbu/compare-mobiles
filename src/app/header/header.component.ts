@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
     this.c_subscription = this.ms.compareStackUpdated.subscribe(list => {
       //console.log(list);
       this.compareStack = list;
-      this.ls.user;
+      // this.ls.user;
     });
     //console.log(this.compareStack);
     this.u_subscription = this.ls.user.subscribe(user => {

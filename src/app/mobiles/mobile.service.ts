@@ -27,7 +27,7 @@ export class MobileService {
         return this.http.get(fireBaseUrl + "mobiles.json");
       }),
       map(rdata => {
-        // console.log(rdata);
+        console.log(rdata);
         const finalArray = [];
         for (const key in rdata) {
           finalArray.push({ ...rdata[key], id: key });
@@ -57,7 +57,9 @@ export class MobileService {
       )
       .subscribe(data => {
         this.brands = data;
+        console.log("all brands");
         console.log(data);
+        this.brandsUpdated.next(data);
       });
   }
   getMobile(id: string) {
