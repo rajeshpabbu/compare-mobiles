@@ -247,3 +247,8 @@ a {
   padding-left: 26px;
   padding-right: 10px;
 }
+
+/* form css */
+input.ng-invalid {
+  border-color: #aa0a00;
+}

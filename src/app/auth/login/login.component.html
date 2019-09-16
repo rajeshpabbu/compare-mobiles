@@ -12,7 +12,7 @@
     <div *ngIf="isLoading" style="text-align:center">
       <app-loading-spinner></app-loading-spinner>
     </div>
-    <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)" *ngIf="!isLoading">
+    <form [formGroup]="form" *ngIf="!isLoading" (ngSubmit)="onSubmit()">
       <h2>{{ isLoginMode ? "Login" : "Sign Up" }}</h2>
       <div class="form-group row">
         <label for="email" class="col-2 col-form-label">E-Mail</label>
@@ -21,13 +21,19 @@
             type="email"
             class="form-control"
             id="email"
-            ngModel
+            formControlName="email"
             placeholder="abcxyz@gmail.com"
             name="email"
-            required
-            email
             value="rpabbu@abc.com"
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="email.touched && email.invalid"
+          >
+            <div *ngIf="email.errors.required">
+              Email is required
+            </div>
+          </div>
         </div>
       </div>
       <div class="form-group row">
@@ -39,18 +45,21 @@
             id="password"
             placeholder="******"
             minlength="6"
-            ngModel
+            formControlName="password"
             name="password"
-            required
           />
+          <div
+            class="alert alert-danger"
+            *ngIf="password.touched && password.invalid"
+          >
+            <div *ngIf="password.errors.required">
+              Password is required
+            </div>
+          </div>
         </div>
       </div>
       <div>
-        <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="!authForm.valid"
-        >
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
           {{ isLoginMode ? "Login" : "Sign Up" }}
         </button>
         <!-- |

@@ -24,7 +24,8 @@ export class LoginService {
 
   constructor(private http: HttpClient, private route: Router) {}
 
-  signUp(email: string, password: string) {
+  signUp(data) {
+    let { email, password } = data;
     return this.http
       .post<authResponseData>(
         "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" +
@@ -43,7 +44,8 @@ export class LoginService {
         )
       );
   }
-  logIn(email: string, password: string) {
+  logIn(data) {
+    let { email, password } = data;
     console.log(email, password);
     return this.http
       .post<authResponseData>(

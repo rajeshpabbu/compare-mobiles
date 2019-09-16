@@ -1,5 +1,5 @@
-import { Component, ComponentFactoryResolver } from "@angular/core";
-import { NgForm } from "@angular/forms";
+import { Component, ComponentFactoryResolver, OnInit } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
 
@@ -11,7 +11,8 @@ import { AlertComponent } from "src/app/shared/alert/alert.component";
   templateUrl: "./login.component.html",
   styleUrls: ["./login.component.css"]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+  form: FormGroup;
   isLoginMode = true;
   isLoading = false;
   error: string = null;
@@ -19,47 +20,51 @@ export class LoginComponent {
   constructor(
     private ls: LoginService,
     private route: Router,
-    private cfr: ComponentFactoryResolver
+    // private cfr: ComponentFactoryResolver,
+    private fb: FormBuilder
   ) {}
+  ngOnInit() {
+    this.form = this.fb.group({
+      email: ["", Validators.required],
+      password: ["", Validators.required]
+    });
+  }
+  get email() {
+    return this.form.get("email");
+  }
+  get password() {
+    return this.form.get("password");
+  }
 
   switchForm() {
     this.isLoginMode = !this.isLoginMode;
   }
-  onSubmit(form: NgForm) {
-    if (!form.valid) return;
-
-    const { email, password } = form.value;
-
-    let authObs: Observable<authResponseData>;
-
+  onSubmit() {
     this.isLoading = true;
-    if (this.isLoginMode) {
-      authObs = this.ls.logIn(email, password);
-    } else {
-      authObs = this.ls.signUp(email, password);
-    }
+    if (!this.form.valid) return;
+
+    let authObs: Observable<authResponseData> = this.isLoginMode
+      ? this.ls.logIn(this.form.value)
+      : this.ls.signUp(this.form.value);
 
     authObs.subscribe(
       res => {
-        console.log(res);
         this.isLoading = false;
         this.route.navigate(["/mobiles"]);
       },
       errorMessage => {
-        console.log(errorMessage);
         this.error = errorMessage;
-        this.showErrorAlert(errorMessage);
+        //this.showErrorAlert(errorMessage);
         this.isLoading = false;
       }
     );
 
-    form.reset();
+    this.form.reset();
   }
   onHandleError() {
     this.error = null;
   }
-  private showErrorAlert(message: string) {
-    //const
-    const alertComFac = this.cfr.resolveComponentFactory(AlertComponent);
-  }
+  // private showErrorAlert(message: string) {
+  //   const alertComFac = this.cfr.resolveComponentFactory(AlertComponent);
+  // }
 }
